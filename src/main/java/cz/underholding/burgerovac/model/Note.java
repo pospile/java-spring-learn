@@ -35,6 +35,10 @@ public class Note implements Serializable {
     @LastModifiedDate
     private Date updatedAt;
 
+
+    private String description;
+
+
     public Long getId() {
         return id;
     }
@@ -73,5 +77,13 @@ public class Note implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

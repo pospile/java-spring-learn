@@ -1,5 +1,6 @@
 package cz.underholding.burgerovac.controller;
 
+import cz.underholding.burgerovac.exception.IllegalCRUDMethod;
 import cz.underholding.burgerovac.exception.ResourceNotFoundException;
 import cz.underholding.burgerovac.model.Note;
 import cz.underholding.burgerovac.repository.NoteRepository;
@@ -17,14 +18,6 @@ public class NoteController {
     @Autowired
     NoteRepository noteRepository;
 
-    // Get All Notes
-    @GetMapping("/notes/test")
-    public Note createTestNote() {
-        Note testNote = new Note();
-        testNote.setTitle("Testovací poznámka");
-        testNote.setContent("Testovací tělo poznámky");
-        return noteRepository.save(testNote);
-    }
 
     // Get All Notes
     @GetMapping("/notes")
@@ -35,7 +28,13 @@ public class NoteController {
     // Create a new Note
     @PostMapping("/notes")
     public Note createNote(@Valid @RequestBody Note note) {
-        return noteRepository.save(note);
+        if (note.getId() != null) {
+            //throw new ResourceNotFoundException("Note", "id", new Object());
+            throw new IllegalCRUDMethod();
+        }
+        else {
+            return noteRepository.save(note);
+        }
     }
 
     // Get a Single Note
