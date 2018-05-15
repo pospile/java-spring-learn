@@ -44,6 +44,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.jaunt-lang</groupId>
+			<artifactId>jaunt</artifactId>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/resources/lib/jaunt1.4.1.jar</systemPath>
+		</dependency>
+
 	</dependencies>
 
 	<build>
